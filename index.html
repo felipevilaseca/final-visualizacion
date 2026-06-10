@@ -3,385 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inmigración en Francia — Origen y tipo</title>
+<title>Origen y tipo de migración — Francia</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --blue:    #185FA5;
-    --blue-lt: #E6F1FB;
-    --coral:   #D85A30;
-    --gray:    #888780;
-    --gray-lt: #F1EFE8;
-    --text:    #1a1a18;
-    --text-2:  #5F5E5A;
-    --text-3:  #B4B2A9;
-    --border:  rgba(0,0,0,0.10);
-    --bg:      #ffffff;
-    --bg-2:    #F7F6F2;
-    --radius:  12px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --blue:    #85B7EB;
-      --blue-lt: #0C447C;
-      --coral:   #F0997B;
-      --gray:    #B4B2A9;
-      --gray-lt: #2C2C2A;
-      --text:    #F1EFE8;
-      --text-2:  #B4B2A9;
-      --text-3:  #5F5E5A;
-      --border:  rgba(255,255,255,0.10);
-      --bg:      #1a1a18;
-      --bg-2:    #222220;
-    }
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 2.5rem 1.5rem 4rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: 8px;
-  }
-
-  h1 {
-    font-size: 26px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: 8px;
-    color: var(--text);
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: var(--text-2);
-    line-height: 1.6;
-    max-width: 560px;
-    margin-bottom: 24px;
-  }
-
-  .legend {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-  }
-
-  .leg {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12px;
-    color: var(--text-2);
-  }
-
-  .leg-sq {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-
-  @media (max-width: 600px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .card {
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    position: relative;
-  }
-
-  .card:hover, .card.active {
-    border-color: var(--blue);
-    border-width: 1px;
-  }
-
-  .card-name {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text);
-    text-align: center;
-  }
-
-  .donut-wrap {
-    position: relative;
-    width: 84px;
-    height: 84px;
-  }
-
-  .center-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    pointer-events: none;
-    line-height: 1;
-  }
-
-  .center-pct {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--blue);
-  }
-
-  .center-sub {
-    display: block;
-    font-size: 9px;
-    color: var(--text-3);
-    margin-top: 1px;
-  }
-
-  .bars {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .bar-lbl {
-    font-size: 9px;
-    color: var(--text-3);
-    width: 42px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .bar-track {
-    flex: 1;
-    height: 4px;
-    background: var(--gray-lt);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.5s ease;
-  }
-
-  .bar-val {
-    font-size: 9px;
-    color: var(--text-2);
-    width: 30px;
-    flex-shrink: 0;
-  }
-
-  .tooltip {
-    position: fixed;
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    font-size: 13px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.12s;
-    z-index: 9999;
-    min-width: 220px;
-    max-width: 260px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  }
-
-  .tip-title {
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 0.5px solid var(--border);
-  }
-
-  .tip-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    gap: 12px;
-  }
-
-  .tip-lbl { color: var(--text-2); }
-  .tip-val { font-weight: 500; color: var(--text); }
-
-  .tip-note {
-    margin-top: 10px;
-    font-size: 11px;
-    color: var(--text-3);
-    line-height: 1.55;
-    padding-top: 8px;
-    border-top: 0.5px solid var(--border);
-  }
-
-  .source {
-    margin-top: 28px;
-    font-size: 11px;
-    color: var(--text-3);
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fff;color:#111;padding:2rem 1.5rem 3rem;max-width:860px;margin:0 auto}
+h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.subtitle{font-size:14px;color:#555;line-height:1.65;max-width:560px;margin-bottom:22px}
+.legend{display:flex;gap:20px;margin-bottom:22px;flex-wrap:wrap}
+.leg{display:flex;align-items:center;gap:7px;font-size:13px;color:#333}
+.leg-sq{width:12px;height:12px;border-radius:2px;flex-shrink:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:620px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border:1px solid #ddd;border-radius:14px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s}
+.card:hover,.card.active{border-color:#1a5cad;border-width:1.5px}
+.card-name{font-size:13px;font-weight:700;color:#111;text-align:center}
+.donut-wrap{position:relative;width:100px;height:100px}
+.center-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;line-height:1.1}
+.center-pct{display:block;font-size:17px;font-weight:700;color:#1a5cad}
+.center-sub{display:block;font-size:10px;color:#999;margin-top:2px}
+.bars{width:100%;display:flex;flex-direction:column;gap:5px}
+.bar-row{display:flex;align-items:center;gap:6px}
+.bar-lbl{font-size:10px;color:#999;width:48px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:5px;background:#eee;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-val{font-size:10px;color:#333;font-weight:500;width:36px;flex-shrink:0}
+.tip{position:fixed;background:#fff;border:1px solid #ddd;border-radius:14px;padding:14px 16px;font-size:13px;pointer-events:none;opacity:0;transition:opacity .12s;z-index:9999;min-width:220px;max-width:260px;box-shadow:0 8px 32px rgba(0,0,0,.10)}
+.tip-title{font-weight:700;font-size:14px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #eee}
+.tip-row{display:flex;justify-content:space-between;margin-bottom:5px;gap:12px}
+.tip-lbl{color:#666}
+.tip-val{font-weight:600}
+.tip-note{margin-top:10px;font-size:11px;color:#999;line-height:1.55;padding-top:8px;border-top:1px solid #eee}
+.source{margin-top:28px;font-size:11px;color:#aaa}
 </style>
 </head>
 <body>
 
-<div class="eyebrow">Francia · Inmigración</div>
-<h1>¿De dónde vienen y cómo llegan?</h1>
-<p class="subtitle">Los 8 principales países de origen de inmigrantes en Francia. El donut muestra la proporción regular vs. irregular. Las barras comparan las cantidades absolutas.</p>
+<h2>Origen y tipo de migración</h2>
+<p class="subtitle">Ordenado de mayor a menor proporción de migración irregular. Los países europeos tienen libre circulación, los del Magreb y el Caribe concentran la mayor irregularidad relativa.</p>
 
 <div class="legend">
-  <div class="leg"><div class="leg-sq" style="background:#185FA5"></div>Migración regular</div>
-  <div class="leg"><div class="leg-sq" style="background:#D85A30"></div>Migración irregular (estimado)</div>
+  <div class="leg"><div class="leg-sq" style="background:#1a5cad"></div>Migración regular</div>
+  <div class="leg"><div class="leg-sq" style="background:#c94f28"></div>Migración irregular (estimado)</div>
 </div>
 
 <div class="grid" id="grid"></div>
-
 <p class="source">Fuente: INSEE 2024 · Ministère de l'Intérieur · estimaciones propias para migración irregular.</p>
 
-<div class="tooltip" id="tip"></div>
+<div class="tip" id="tip"></div>
 
 <script>
-const data = [
-  { name:'Haití',     reg:77, irr:23, total:104,  note:'Mayor tasa de irregularidad. Vínculos coloniales con Francia y escasas vías legales de entrada.' },
-  { name:'Túnez',     reg:81, irr:19, total:391,  note:'Alta irregularidad relativa. Proximidad geográfica y fuerte presión migratoria económica.' },
-  { name:'Argelia',   reg:84, irr:16, total:1004, note:'Mayor comunidad inmigrante en Francia. Herencia de la guerra de independencia (1962).' },
-  { name:'Marruecos', reg:85, irr:15, total:932,  note:'Segunda comunidad más grande. Cadenas migratorias históricas hacia Lyon y París.' },
-  { name:'Turquía',   reg:88, irr:12, total:279,  note:'Migración más ordenada, concentrada en Alsacia-Lorena por acuerdos laborales.' },
-  { name:'Italia',    reg:97, irr:3,  total:279,  note:'Migración histórica postguerra. Libre circulación europea explica la casi nula irregularidad.' },
-  { name:'Portugal',  reg:98, irr:2,  total:574,  note:'Libre circulación UE. Tercera comunidad más grande, prácticamente toda regular.' },
-  { name:'España',    reg:98, irr:2,  total:239,  note:'Libre circulación UE. Irregularidad prácticamente inexistente.' },
+const data=[
+  {name:'Haití',     reg:77,irr:23,total:104, note:'Mayor tasa de irregularidad. Vínculos coloniales con Francia y escasas vías legales de entrada.'},
+  {name:'Túnez',     reg:81,irr:19,total:391, note:'Alta irregularidad relativa. Proximidad geográfica y fuerte presión migratoria económica.'},
+  {name:'Argelia',   reg:84,irr:16,total:1004,note:'Mayor comunidad inmigrante en Francia. Herencia de la guerra de independencia (1962).'},
+  {name:'Marruecos', reg:85,irr:15,total:932, note:'Segunda comunidad más grande. Cadenas migratorias históricas hacia Lyon y París.'},
+  {name:'Turquía',   reg:88,irr:12,total:279, note:'Migración más ordenada, concentrada en Alsacia-Lorena por acuerdos laborales.'},
+  {name:'Italia',    reg:97,irr:3, total:279, note:'Migración histórica postguerra. Libre circulación europea explica la casi nula irregularidad.'},
+  {name:'Portugal',  reg:98,irr:2, total:574, note:'Libre circulación UE. Tercera comunidad más grande, prácticamente toda regular.'},
+  {name:'España',    reg:98,irr:2, total:239, note:'Libre circulación UE. Irregularidad prácticamente inexistente.'},
 ];
 
-const maxTotal = Math.max(...data.map(d => d.total));
-const tip = document.getElementById('tip');
+const maxTotal=Math.max(...data.map(d=>d.total));
+const tip=document.getElementById('tip');
+document.addEventListener('mousemove',e=>{
+  tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
+  tip.style.top=(e.clientY-10)+'px';
+});
 
-function moveTip(e) {
-  const x = e.clientX + 16;
-  const y = e.clientY - 10;
-  tip.style.left = Math.min(x, window.innerWidth - 280) + 'px';
-  tip.style.top = y + 'px';
-}
-document.addEventListener('mousemove', moveTip);
-
-function makeDonut(container, reg, irr) {
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('width', '84');
-  svg.setAttribute('height', '84');
-  svg.setAttribute('viewBox', '0 0 84 84');
-  const cx = 42, cy = 42, R = 38, r = 24;
-  const slices = [
-    { pct: reg, color: '#185FA5' },
-    { pct: irr, color: '#D85A30' },
-  ];
-  let start = -Math.PI / 2;
-  slices.forEach(s => {
-    const angle = (s.pct / 100) * 2 * Math.PI;
-    const end = start + angle;
-    const lg = angle > Math.PI ? 1 : 0;
-    const x1 = cx + R * Math.cos(start), y1 = cy + R * Math.sin(start);
-    const x2 = cx + R * Math.cos(end),   y2 = cy + R * Math.sin(end);
-    const x3 = cx + r * Math.cos(end),   y3 = cy + r * Math.sin(end);
-    const x4 = cx + r * Math.cos(start), y4 = cy + r * Math.sin(start);
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    p.setAttribute('d', `M${x1},${y1} A${R},${R},0,${lg},1,${x2},${y2} L${x3},${y3} A${r},${r},0,${lg},0,${x4},${y4} Z`);
-    p.setAttribute('fill', s.color);
-    p.setAttribute('stroke', '#ffffff');
-    p.setAttribute('stroke-width', '1.5');
-    svg.appendChild(p);
-    start = end;
-  });
+function makeDonut(container,reg,irr){
+  const ns='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(ns,'svg');
+  svg.setAttribute('width','100');svg.setAttribute('height','100');svg.setAttribute('viewBox','0 0 100 100');
+  const cx=50,cy=50,R=46,r=29;
+  [[reg,'#1a5cad'],[irr,'#c94f28']].reduce((s,[pct,color])=>{
+    const a=(pct/100)*2*Math.PI,e=s+a,lg=a>Math.PI?1:0;
+    const p=document.createElementNS(ns,'path');
+    p.setAttribute('d',`M${cx+R*Math.cos(s)},${cy+R*Math.sin(s)} A${R},${R},0,${lg},1,${cx+R*Math.cos(e)},${cy+R*Math.sin(e)} L${cx+r*Math.cos(e)},${cy+r*Math.sin(e)} A${r},${r},0,${lg},0,${cx+r*Math.cos(s)},${cy+r*Math.sin(s)} Z`);
+    p.setAttribute('fill',color);p.setAttribute('stroke','#fff');p.setAttribute('stroke-width','1.5');
+    svg.appendChild(p);return e;
+  },-Math.PI/2);
   container.appendChild(svg);
 }
 
-const grid = document.getElementById('grid');
-
-data.forEach(d => {
-  const card = document.createElement('div');
-  card.className = 'card';
-
-  const name = document.createElement('div');
-  name.className = 'card-name';
-  name.textContent = d.name;
-  card.appendChild(name);
-
-  const dw = document.createElement('div');
-  dw.className = 'donut-wrap';
-  makeDonut(dw, d.reg, d.irr);
-
-  const cl = document.createElement('div');
-  cl.className = 'center-label';
-  cl.innerHTML = `<span class="center-pct">${d.reg}%</span><span class="center-sub">regular</span>`;
-  dw.appendChild(cl);
-  card.appendChild(dw);
-
-  const bars = document.createElement('div');
-  bars.className = 'bars';
-
-  const regAbs  = Math.round(d.total * d.reg / 100);
-  const irrAbs  = Math.round(d.total * d.irr / 100);
-
-  [
-    { label: 'Total',      val: d.total + 'K', pct: (d.total / maxTotal) * 100, color: '#888780' },
-    { label: 'Regular',    val: regAbs + 'K',  pct: d.reg,                      color: '#185FA5' },
-    { label: 'Irregular',  val: irrAbs + 'K',  pct: Math.min(d.irr * 3, 100),  color: '#D85A30' },
-  ].forEach(b => {
-    const row = document.createElement('div');
-    row.className = 'bar-row';
-    row.innerHTML = `
-      <div class="bar-lbl">${b.label}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${b.pct.toFixed(1)}%;background:${b.color}"></div></div>
-      <div class="bar-val">${b.val}</div>`;
+const grid=document.getElementById('grid');
+data.forEach(d=>{
+  const card=document.createElement('div');card.className='card';
+  const nm=document.createElement('div');nm.className='card-name';nm.textContent=d.name;card.appendChild(nm);
+  const dw=document.createElement('div');dw.className='donut-wrap';
+  makeDonut(dw,d.reg,d.irr);
+  const cl=document.createElement('div');cl.className='center-label';
+  cl.innerHTML=`<span class="center-pct">${d.reg}%</span><span class="center-sub">regular</span>`;
+  dw.appendChild(cl);card.appendChild(dw);
+  const bars=document.createElement('div');bars.className='bars';
+  const ra=Math.round(d.total*d.reg/100),ia=Math.round(d.total*d.irr/100);
+  [{l:'Total',v:d.total+'K',p:(d.total/maxTotal)*100,c:'#aaa'},
+   {l:'Regular',v:ra+'K',p:d.reg,c:'#1a5cad'},
+   {l:'Irregular',v:ia+'K',p:Math.min(d.irr*3,100),c:'#c94f28'}
+  ].forEach(b=>{
+    const row=document.createElement('div');row.className='bar-row';
+    row.innerHTML=`<div class="bar-lbl">${b.l}</div><div class="bar-track"><div class="bar-fill" style="width:${b.p.toFixed(1)}%;background:${b.c}"></div></div><div class="bar-val">${b.v}</div>`;
     bars.appendChild(row);
   });
   card.appendChild(bars);
-
-  card.addEventListener('mouseenter', () => {
-    document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  card.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
     card.classList.add('active');
-    tip.innerHTML = `
-      <div class="tip-title">${d.name}</div>
-      <div class="tip-row"><span class="tip-lbl">Total inmigrantes</span><span class="tip-val">${d.total.toLocaleString()}K</span></div>
-      <div class="tip-row"><span class="tip-lbl">Regular</span><span class="tip-val" style="color:#185FA5">${d.reg}% · ${regAbs}K personas</span></div>
-      <div class="tip-row"><span class="tip-lbl">Irregular</span><span class="tip-val" style="color:#D85A30">${d.irr}% · ${irrAbs}K personas</span></div>
+    tip.innerHTML=`<div class="tip-title">${d.name}</div>
+      <div class="tip-row"><span class="tip-lbl">Total</span><span class="tip-val">${d.total}K personas</span></div>
+      <div class="tip-row"><span class="tip-lbl">Regular</span><span class="tip-val" style="color:#1a5cad">${d.reg}% · ${ra}K</span></div>
+      <div class="tip-row"><span class="tip-lbl">Irregular</span><span class="tip-val" style="color:#c94f28">${d.irr}% · ${ia}K</span></div>
       <div class="tip-note">${d.note}</div>`;
-    tip.style.opacity = '1';
+    tip.style.opacity='1';
   });
-
-  card.addEventListener('mouseleave', () => {
-    card.classList.remove('active');
-    tip.style.opacity = '0';
-  });
-
+  card.addEventListener('mouseleave',()=>{card.classList.remove('active');tip.style.opacity='0';});
   grid.appendChild(card);
 });
 </script>
